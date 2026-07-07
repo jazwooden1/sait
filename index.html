@@ -1,0 +1,1541 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jazwooden | جازوودن - أثاث وديكورات خشبية مضيئة ومخصصة</title>
+  <meta name="description" content="موقع جازوودن للمنتجات الخشبية اليدوية الفاخرة والمضيئة والمصممة حسب الطلب. اطلب تصميمك المخصص الآن.">
+  
+  <!-- Google Fonts: Outfit for English, Cairo for Arabic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- FIXED HEADER -->
+  <header class="main-header">
+    <div class="header-container">
+      <!-- Language Switcher & Left Section -->
+      <div class="header-left">
+        <button id="lang-switch-btn" class="btn-lang" onclick="toggleLanguage()">
+          <span class="lang-text">EN</span>
+        </button>
+      </div>
+
+      <!-- Centered Logo -->
+      <div class="header-center">
+        <a href="#home" class="logo-link">
+          <div class="logo-wrapper">
+            <svg viewBox="0 0 100 100" class="logo-icon">
+              <path d="M50 5 C25 5 5 25 5 50 C5 75 25 95 50 95 C75 95 95 75 95 50 C95 25 75 5 50 5 Z" fill="none" stroke="currentColor" stroke-width="4"/>
+              <path d="M50 15 C30 15 15 30 15 50 C15 70 30 85 50 85 C70 85 85 70 85 50 C85 30 70 15 50 15 Z" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 4"/>
+              <path d="M50 25 C36 25 25 36 25 50 C25 64 36 75 50 75 C64 75 75 64 75 50 C75 36 64 25 50 25 Z" fill="none" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M35 50 Q50 20 65 50 Q50 80 35 50 Z" fill="currentColor" opacity="0.15"/>
+              <path d="M50 35 L50 65 M35 50 L65 50" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+            <span class="logo-text">Jazwooden</span>
+          </div>
+        </a>
+      </div>
+
+      <!-- Navigation Links & Right Section -->
+      <div class="header-right">
+        <nav class="main-nav">
+          <a href="#home" class="nav-item" data-key="nav_home">الرئيسية</a>
+          <a href="#products" class="nav-item" data-key="nav_products">منتجاتنا</a>
+          <a href="#cart" class="nav-item cart-nav-item">
+            <span data-key="nav_cart">السلة</span>
+            <span id="cart-badge" class="badge">0</span>
+          </a>
+        </nav>
+        <a href="#custom-design" class="btn btn-secondary btn-header-cta" data-key="nav_custom_cta">اطلب تصميماً خاصاً</a>
+        <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <div class="mobile-menu-header">
+        <span class="logo-text">Jazwooden</span>
+        <button class="mobile-menu-close" onclick="toggleMobileMenu()">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <nav class="mobile-nav-links">
+        <a href="#home" class="mobile-nav-item" onclick="toggleMobileMenu()" data-key="nav_home">الرئيسية</a>
+        <a href="#products" class="mobile-nav-item" onclick="toggleMobileMenu()" data-key="nav_products">منتجاتنا</a>
+        <a href="#cart" class="mobile-nav-item" onclick="toggleMobileMenu()">
+          <span data-key="nav_cart">السلة</span>
+          <span id="cart-badge-mobile" class="badge">0</span>
+        </a>
+        <a href="#about" class="mobile-nav-item" onclick="toggleMobileMenu()" data-key="nav_about">من نحن</a>
+        <a href="#contact" class="mobile-nav-item" onclick="toggleMobileMenu()" data-key="nav_contact">اتصل بنا</a>
+      </nav>
+      <div class="mobile-menu-footer">
+        <a href="#custom-design" class="btn btn-secondary btn-full" onclick="toggleMobileMenu()" data-key="nav_custom_cta">اطلب تصميماً خاصاً</a>
+        <button class="btn btn-outline btn-full btn-lang-mobile" onclick="toggleLanguage(); toggleMobileMenu()">
+          <span class="lang-text">English</span>
+        </button>
+      </div>
+    </div>
+    <div id="mobile-menu-overlay" class="mobile-menu-overlay" onclick="toggleMobileMenu()"></div>
+  </header>
+
+  <!-- APP VIEW (SPA PAGES CONTAINER) -->
+  <main id="app-view-container">
+
+    <!-- 1. HOME VIEW -->
+    <div id="home-view" class="app-page active">
+      <!-- Hero CTA Button (Immediately after Header) -->
+      <section class="hero-cta-section">
+        <div class="container text-center">
+          <h1 class="hero-title animate-fade-in" data-key="hero_title">منتجات خشبية يدوية فاخرة تضيء مساحتك</h1>
+          <p class="hero-subtitle animate-fade-in" data-key="hero_subtitle">نصنع بكل حب ديكورات ومصباح طاولات ورفوف خشبية دافئة تلبي شغفك</p>
+          <div class="hero-buttons">
+            <a href="#custom-design" class="btn btn-primary btn-lg" data-key="cta_custom_design">اطلب تصميماً خاصاً</a>
+            <a href="#products" class="btn btn-outline btn-lg" data-key="cta_view_products">تصفح المنتجات</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Gallery Section -->
+      <section class="video-gallery-section py-5">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="section-tag" data-key="tag_workshop">ورشة العمل</span>
+            <h2 class="section-title" data-key="title_videos">شاهد كيف نصنع الجمال</h2>
+            <div class="section-divider"></div>
+          </div>
+          <!-- Youtube Embedded Muted Video Frame -->
+          <div class="main-video-wrapper">
+            <div id="youtube-player-container" class="youtube-player-ratio">
+              <!-- Dynamically loaded player -->
+              <div id="youtube-player"></div>
+              <!-- Mute/Unmute Toggle Button -->
+              <button id="youtube-mute-toggle" class="yt-mute-toggle" onclick="toggleYouTubeMute()" title="كتم/تشغيل الصوت">
+                <i class="fa-solid fa-volume-xmark" id="mute-icon"></i>
+              </button>
+            </div>
+            <div class="video-overlay-details">
+              <span class="live-tag"><i class="fa-solid fa-circle-dot"></i> مباشر من الورشة</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grid Sections (Purpose, Goal, Story) -->
+      <section class="brand-values-section py-5">
+        <div class="container">
+          <div class="grid grid-3">
+            <div class="card value-card">
+              <div class="value-icon"><i class="fa-solid fa-leaf"></i></div>
+              <h3 data-key="title_purpose">رسالتنا</h3>
+              <p id="content-purpose" data-key="desc_purpose">إعادة تعريف الديكور الداخلي من خلال تقديم قطع خشبية طبيعية فريدة تجمع بين دفء الطبيعة وإبداع اليد البشرية.</p>
+            </div>
+            <div class="card value-card">
+              <div class="value-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <h3 data-key="title_goal">هدفنا</h3>
+              <p id="content-goal" data-key="desc_goal">أن نكون الخيار الأول في الأردن والوطن العربي للمنتجات الخشبية اليدوية المضيئة والمصممة خصيصاً لتناسب أذواق عملائنا.</p>
+            </div>
+            <div class="card value-card">
+              <div class="value-icon"><i class="fa-solid fa-feather-pointed"></i></div>
+              <h3 data-key="title_story">قصتنا</h3>
+              <p id="content-story" data-key="desc_story">بدأنا بشغف في ورشة عمل صغيرة لنحت الخشب وتشكيله. ندمج الإنارة الدافئة مع الخشب السويدي والزان الطبيعي لنصنع تحفاً فنية مميزة.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Best Sellers & Featured Products -->
+      <section class="products-showcase-section py-5">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="section-tag" data-key="tag_best_sellers">الأكثر طلباً</span>
+            <h2 class="section-title" data-key="title_best_sellers">المنتجات الأكثر مبيعاً لدينا</h2>
+            <div class="section-divider"></div>
+          </div>
+          <div id="best-sellers-grid" class="grid grid-3">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Before and After Section -->
+      <section class="before-after-section py-5 bg-warm">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="section-tag" data-key="tag_transformation">التحول</span>
+            <h2 class="section-title" data-key="title_before_after">قبل وبعد - حلول ديكور عملية</h2>
+            <div class="section-divider"></div>
+          </div>
+          <div class="before-after-slider-container">
+            <div class="ba-card">
+              <div class="ba-images-container">
+                <div class="ba-image ba-before">
+                  <img src="https://images.unsplash.com/photo-1513694203232-719a280e022f?q=80&w=600&auto=format&fit=crop" alt="Before">
+                  <span class="ba-badge before-badge" data-key="badge_before">قبل (جدار فارغ / عيب إنشائي)</span>
+                </div>
+                <div class="ba-image ba-after">
+                  <img src="https://images.unsplash.com/photo-1540518614846-7eded433c457?q=80&w=600&auto=format&fit=crop" alt="After">
+                  <span class="ba-badge after-badge" data-key="badge_after">بعد (تصميم جازوودن المضيء)</span>
+                </div>
+              </div>
+              <div class="ba-content">
+                <h3 data-key="ba_title_1">تغطية العيوب الجدارية والكهربائية</h3>
+                <p data-key="ba_desc_1">قمنا بتحويل لوحة مفاتيح كهربائية بارزة في ممر المنزل إلى رف خشبي مضيء مذهل ومرتب، يضيف قيمة جمالية ومساحة تخزين عملية.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Customer Reviews Section -->
+      <section class="reviews-section py-5">
+        <div class="container">
+          <div class="section-header text-center">
+            <span class="section-tag" data-key="tag_reviews">آراء العملاء</span>
+            <h2 class="section-title" data-key="title_reviews">ماذا يقولون عنا؟</h2>
+            <div class="section-divider"></div>
+          </div>
+          <div id="reviews-carousel" class="grid grid-3">
+            <!-- Dynamically populated reviews -->
+          </div>
+        </div>
+      </section>
+
+      <!-- WhatsApp Call to Action -->
+      <section class="whatsapp-cta-section py-5 text-center">
+        <div class="container">
+          <h2 data-key="title_whatsapp_cta">تريد تفاصيل فورية؟ تحدث معنا مباشرة</h2>
+          <p data-key="desc_whatsapp_cta">يمكنك مشاركة أفكارك أو قياسات مساحتك معنا عبر الواتساب مباشرة لنبدأ بالتخطيط فوراً</p>
+          <a href="https://wa.me/962790000000" target="_blank" class="btn btn-whatsapp btn-lg">
+            <i class="fa-brands fa-whatsapp"></i> <span data-key="btn_whatsapp">تواصل عبر الواتس اب</span>
+          </a>
+        </div>
+      </section>
+    </div>
+
+    <!-- 2. PRODUCTS LIST VIEW -->
+    <div id="products-view" class="app-page">
+      <div class="container py-5">
+        <div class="section-header text-center">
+          <h1 class="section-title" data-key="title_catalog">كتالوج المنتجات الخشبية</h1>
+          <p class="section-subtitle" data-key="desc_catalog">استكشف تشكيلتنا الفاخرة من الرفوف، والمصابيح، والهدايا المحفورة يدوياً</p>
+          <div class="section-divider"></div>
+        </div>
+
+        <!-- Search & Filter Controls -->
+        <div class="filters-container">
+          <div class="search-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="search-input" placeholder="ابحث عن منتج..." oninput="filterProducts()">
+          </div>
+          <div class="filter-wrapper">
+            <i class="fa-solid fa-filter filter-icon"></i>
+            <select id="category-select" onchange="filterProducts()">
+              <!-- Categories dynamically added here -->
+            </select>
+          </div>
+        </div>
+
+        <div id="products-grid" class="grid grid-3 py-4">
+          <!-- Dynamically filled -->
+        </div>
+        <div id="no-products-message" class="text-center py-5 hidden">
+          <i class="fa-solid fa-box-open fa-3x text-muted mb-3"></i>
+          <p data-key="no_products_found">عذراً، لم نجد أي منتجات تطابق بحثك.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. PRODUCT DETAILS VIEW -->
+    <div id="product-detail-view" class="app-page">
+      <div class="container py-5">
+        <!-- Back Link -->
+        <a href="#products" class="back-link mb-4">
+          <i class="fa-solid fa-arrow-right icon-rtl"></i> <span data-key="back_to_products">العودة إلى المنتجات</span>
+        </a>
+
+        <div class="product-detail-layout">
+          <!-- Gallery -->
+          <div class="product-gallery">
+            <div class="main-image-container">
+              <img id="detail-main-img" src="" alt="Main Product Image">
+            </div>
+            <div id="detail-thumbnails" class="thumbnail-list">
+              <!-- Thumbnails populated here -->
+            </div>
+          </div>
+
+          <!-- Product Info & Dynamic Order Form -->
+          <div class="product-info-panel">
+            <span id="detail-category" class="product-category-tag"></span>
+            <h1 id="detail-title" class="product-title-large"></h1>
+            
+            <div class="product-price-box">
+              <div class="price-item">
+                <span class="price-val" id="detail-price-jod"></span>
+                <span class="price-currency" data-key="jod">د.أ</span>
+              </div>
+              <div class="price-item usd-price">
+                <span class="price-val" id="detail-price-usd"></span>
+                <span class="price-currency">USD</span>
+              </div>
+            </div>
+
+            <!-- Coupon Input Section -->
+            <div class="coupon-section mt-3 mb-2">
+              <label class="form-label">هل لديك كود خصم؟</label>
+              <div class="coupon-input-wrapper" style="display:flex;gap:8px">
+                <input type="text" id="detail-coupon-input" placeholder="أدخل كود الكوبون" style="flex:1;text-transform:uppercase" autocomplete="off">
+                <button class="btn btn-secondary" onclick="applyCouponDetail()" style="white-space:nowrap"><i class="fa-solid fa-check"></i> تطبيق</button>
+              </div>
+              <div id="detail-coupon-result" class="coupon-result mt-2" style="display:none"></div>
+              <input type="hidden" id="detail-coupon-code" value="">
+            </div>
+
+            <div class="product-delivery-badge">
+              <i class="fa-solid fa-truck-fast"></i>
+              <span data-key="delivery_time">وقت التوصيل:</span>
+              <strong id="detail-delivery"></strong>
+            </div>
+
+            <p id="detail-description" class="product-description-long"></p>
+
+            <div class="product-quick-actions mt-4">
+                <button type="button" onclick="addProductToCartFromDetails()" class="btn btn-secondary btn-full">
+                  <i class="fa-solid fa-cart-plus"></i> <span data-key="btn_add_to_cart">إضافة إلى السلة</span>
+                </button>
+
+                <div class="or-separator">
+                  <span data-key="text_or">أو</span>
+                </div>
+            </div>
+
+            <div class="card order-card-form mt-2">
+              <h3 data-key="order_form_title" class="mb-3">تأكيد الطلب المباشر</h3>
+              <form id="direct-order-form" onsubmit="handleDirectOrderSubmit(event)">
+                <input type="hidden" id="order-product-id">
+                
+                <div class="form-group">
+                  <label for="order-name" data-key="label_name">الاسم الكامل *</label>
+                  <input type="text" id="order-name" required placeholder="مثال: أحمد محمد">
+                  <span class="error-msg" id="err-order-name"></span>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group col-4">
+                    <label for="order-country" data-key="label_country_code">رمز الدولة</label>
+                    <select id="order-country">
+                      <option value="+962">الأردن (+962)</option>
+                      <option value="+966">السعودية (+966)</option>
+                      <option value="+971">الإمارات (+971)</option>
+                      <option value="+965">الكويت (+965)</option>
+                      <option value="+974">قطر (+974)</option>
+                      <option value="+968">عُمان (+968)</option>
+                      <option value="+973">البحرين (+973)</option>
+                      <option value="+964">العراق (+964)</option>
+                      <option value="+961">لبنان (+961)</option>
+                      <option value="+970">فلسطين (+970)</option>
+                      <option value="+20">مصر (+20)</option>
+                    </select>
+                  </div>
+                  <div class="form-group col-8">
+                    <label for="order-phone" data-key="label_phone">رقم الهاتف *</label>
+                    <input type="tel" id="order-phone" required placeholder="790000000">
+                    <span class="error-msg" id="err-order-phone"></span>
+                  </div>
+                </div>
+
+                <!-- Customizable Phrase Field (Conditional) -->
+                <div id="custom-phrase-container" class="form-group hidden">
+                  <label for="order-phrase" data-key="label_phrase">العبارة المطلوبة للحفر / التخصيص *</label>
+                  <input type="text" id="order-phrase" placeholder="مثال: عائلة أحمد 2026">
+                  <span class="error-msg" id="err-order-phrase"></span>
+                </div>
+
+                <!-- Custom Image Upload Field (Conditional) -->
+                <div id="image-upload-container" class="form-group hidden">
+                  <label for="order-image" data-key="label_image_upload">تحميل صورة التصميم المطلوبة *</label>
+                  <div class="custom-file-upload">
+                    <input type="file" id="order-image" accept="image/*,.pdf,.svg,.eps,.dxf,.ai">
+                    <div class="file-upload-placeholder">
+                      <i class="fa-solid fa-cloud-arrow-up"></i>
+                      <span data-key="btn_choose_image">اختر صورة أو ملف...</span>
+                    </div>
+                  </div>
+                  <span class="file-name-display" id="order-image-name"></span>
+                  <span class="error-msg" id="err-order-image"></span>
+                  <small class="text-muted" data-key="upload_hint">نقبل جميع صيغ الصور والملفات الفنية حتى 50 ميغابايت</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="order-notes" data-key="label_notes">ملاحظات إضافية (اختياري)</label>
+                  <textarea id="order-notes" rows="3" placeholder="أي تفاصيل أخرى ترغب بإخبارنا بها..."></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-full mt-3">
+                  <i class="fa-solid fa-circle-check"></i> <span data-key="btn_confirm_order">تأكيد الطلب المباشر</span>
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 4. CUSTOM DESIGN REQUEST VIEW -->
+    <div id="custom-design-view" class="app-page">
+      <div class="container py-5">
+        <div class="section-header text-center">
+          <span class="section-tag" data-key="tag_custom_design">ابتكر قطعتك</span>
+          <h1 class="section-title" data-key="cta_custom_design">اطلب تصميماً خشبياً مخصصاً</h1>
+          <p class="section-subtitle" data-key="desc_custom_design">أرسل لنا صورة لمكتبك، جدارك، أو عيب إنشائي تريد تغطيته برَف أو ديكور خشبي مضيء</p>
+          <div class="section-divider"></div>
+        </div>
+
+        <div class="custom-design-layout">
+          <!-- Examples & Inspiration -->
+          <div class="inspiration-sidebar">
+            <h3 data-key="title_examples" class="mb-3">أفكار وتطبيقات شائعة:</h3>
+            <ul class="inspiration-list">
+              <li>
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <div>
+                  <strong data-key="ex_title_1">تحويل النوافذ الداخلية إلى رفوف</strong>
+                  <p data-key="ex_desc_1">نصمم رفوف خشبية متداخلة تناسب إطارات النوافذ تماماً للاستخدام كمكتبة صغيرة.</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <div>
+                  <strong data-key="ex_title_2">تغطية العيوب الإنشائية</strong>
+                  <p data-key="ex_desc_2">إخفاء التشققات أو الأعمدة البارزة بتصاميم خشبية متناسقة مزودة بإنارة مخفية.</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <div>
+                  <strong data-key="ex_title_3">إخفاء لوحات الكهرباء والعدادات</strong>
+                  <p data-key="ex_desc_3">صناديق خشبية محفورة يدوياً ومزخرفة تفتح كالباب لإخفاء لوحات الكهرباء بشكل جمالي.</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <div>
+                  <strong data-key="ex_title_4">أفكار ديكور مخصصة ومضيئة</strong>
+                  <p data-key="ex_desc_4">لوحات جدارية مضيئة لغرف النوم أو المجالس بشعار عملك أو اسم عائلتك.</p>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Request Form -->
+          <div class="card request-form-container">
+            <form id="custom-design-form" onsubmit="handleCustomDesignSubmit(event)">
+              <div class="form-group">
+                <label for="custom-name" data-key="label_name">الاسم الكامل *</label>
+                <input type="text" id="custom-name" required placeholder="مثال: رامي العلي">
+                <span class="error-msg" id="err-custom-name"></span>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group col-4">
+                  <label for="custom-country" data-key="label_country_code">رمز الدولة</label>
+                  <select id="custom-country">
+                    <option value="+962">الأردن (+962)</option>
+                    <option value="+966">السعودية (+966)</option>
+                    <option value="+971">الإمارات (+971)</option>
+                    <option value="+965">الكويت (+965)</option>
+                    <option value="+974">قطر (+974)</option>
+                    <option value="+968">عُمان (+968)</option>
+                    <option value="+973">البحرين (+973)</option>
+                  </select>
+                </div>
+                <div class="form-group col-8">
+                  <label for="custom-phone" data-key="label_phone">رقم الهاتف *</label>
+                  <input type="tel" id="custom-phone" required placeholder="790000000">
+                  <span class="error-msg" id="err-custom-phone"></span>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="custom-idea" data-key="label_idea">وصف فكرتك أو المساحة الخاصة بك *</label>
+                <textarea id="custom-idea" rows="4" required placeholder="مثال: أريد تغطية لوحة كهربائية مقاس 40*60 سم في الممر برف خشبي مع إضاءة ليد دافئة..."></textarea>
+                <span class="error-msg" id="err-custom-idea"></span>
+              </div>
+
+              <div class="form-group">
+                <label for="custom-image" data-key="label_space_image">ارفع صورة للمساحة أو الفكرة المكتوبة (اختياري)</label>
+                <div class="custom-file-upload">
+                  <input type="file" id="custom-image" accept="image/*,.pdf,.svg,.eps,.dxf,.ai">
+                  <div class="file-upload-placeholder">
+                    <i class="fa-solid fa-camera"></i>
+                    <span data-key="btn_choose_image">صورة الجدار، المخطط أو الفكرة...</span>
+                  </div>
+                </div>
+                <span class="file-name-display" id="custom-image-name"></span>
+                <span class="error-msg" id="err-custom-image"></span>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full mt-3">
+                <i class="fa-solid fa-paper-plane"></i> <span data-key="btn_send_request">إرسال طلب التصميم المخصص</span>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 5. CART VIEW -->
+    <div id="cart-view" class="app-page">
+      <div class="container py-5">
+        <div class="section-header text-center">
+          <h1 class="section-title" data-key="nav_cart">سلة المشتريات</h1>
+          <div class="section-divider"></div>
+        </div>
+
+        <div id="cart-content-wrapper" class="cart-layout">
+          <!-- Cart Items List -->
+          <div class="cart-items-panel">
+            <div id="cart-items-list">
+              <!-- Dynamically populated cart items -->
+            </div>
+          </div>
+
+          <!-- Checkout & Totals Summary -->
+          <div class="cart-summary-panel">
+            <div class="card summary-card">
+              <!-- Coupon Input Section in Cart -->
+              <div class="coupon-section mb-3">
+                <label class="form-label">هل لديك كود خصم؟</label>
+                <div class="coupon-input-wrapper" style="display:flex;gap:8px">
+                  <input type="text" id="cart-coupon-input" placeholder="أدخل كود الكوبون" style="flex:1;text-transform:uppercase" autocomplete="off">
+                  <button class="btn btn-secondary btn-sm" onclick="applyCouponCart()" style="white-space:nowrap"><i class="fa-solid fa-check"></i> تطبيق</button>
+                </div>
+                <div id="cart-coupon-result" class="coupon-result mt-2" style="display:none"></div>
+                <input type="hidden" id="cart-coupon-code" value="">
+              </div>
+
+              <h3 data-key="summary_title" class="mb-3">ملخص الحساب</h3>
+              
+              <div class="summary-row">
+                <span data-key="subtotal">المجموع الفرعي</span>
+                <div>
+                  <span id="cart-subtotal-jod">0</span> <span data-key="jod">د.أ</span>
+                  <span class="text-muted block text-xs" id="cart-subtotal-usd">($0)</span>
+                </div>
+              </div>
+
+              <div id="cart-discount-row" class="summary-row text-success hidden">
+                <span data-key="discount">الخصم والعروض</span>
+                <div>
+                  <span id="cart-discount-jod">0</span> <span data-key="jod">د.أ</span>
+                  <span class="text-success block text-xs" id="cart-discount-usd">($0)</span>
+                </div>
+              </div>
+
+              <div class="summary-row total-row">
+                <span data-key="total">المجموع النهائي</span>
+                <div>
+                  <span id="cart-total-jod" class="text-gold font-bold">0</span> <span class="text-gold font-bold" data-key="jod">د.أ</span>
+                  <span class="text-muted block text-xs font-normal" id="cart-total-usd">($0)</span>
+                </div>
+              </div>
+
+              <!-- Order Confirmation Form inside Cart -->
+              <div class="cart-checkout-form mt-4">
+                <h4 data-key="confirm_order_details" class="mb-2">بيانات تأكيد الطلب</h4>
+                <form id="cart-checkout-form" onsubmit="handleCartCheckoutSubmit(event)">
+                  <div class="form-group">
+                    <label for="cart-name" data-key="label_name">الاسم الكامل *</label>
+                    <input type="text" id="cart-name" required placeholder="مثال: رائد حسن">
+                    <span class="error-msg" id="err-cart-name"></span>
+                  </div>
+
+                  <div class="form-row">
+                    <div class="form-group col-4">
+                      <label for="cart-country" data-key="label_country_code">رمز الدولة</label>
+                      <select id="cart-country">
+                        <option value="+962">الأردن (+962)</option>
+                        <option value="+966">السعودية (+966)</option>
+                        <option value="+971">الإمارات (+971)</option>
+                        <option value="+965">الكويت (+965)</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-8">
+                      <label for="cart-phone" data-key="label_phone">رقم الهاتف *</label>
+                      <input type="tel" id="cart-phone" required placeholder="790000000">
+                      <span class="error-msg" id="err-cart-phone"></span>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="cart-address" data-key="label_address">العنوان الكامل للتوصيل *</label>
+                    <textarea id="cart-address" rows="2" required placeholder="عمان، شارع المدينة المنورة، بناء 14، شقة 3"></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-full mt-3">
+                    <i class="fa-solid fa-bag-shopping"></i> <span data-key="btn_confirm_checkout">إرسال وتأكيد الطلب</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div id="cart-empty-message" class="text-center py-5 hidden">
+          <i class="fa-solid fa-cart-shopping fa-4x text-muted mb-3"></i>
+          <h2 data-key="cart_empty_title">سلتك فارغة حالياً</h2>
+          <p data-key="cart_empty_desc" class="mb-4">تصفح منتجاتنا المميزة وأضف لمسات دافئة لمساحتك!</p>
+          <a href="#products" class="btn btn-primary" data-key="cta_view_products">تصفح المنتجات</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- 6. ABOUT VIEW -->
+    <div id="about-view" class="app-page">
+      <div class="container py-5 text-center max-w-xl">
+        <h1 class="section-title mb-3" data-key="nav_about">من نحن</h1>
+        <div class="section-divider mb-4"></div>
+        <div id="about-text-content" class="about-rich-content">
+          <!-- Populated from Admin / Defaults -->
+          <p>نحن في <strong>جازوودن</strong> نؤمن بأن الخشب ليس مجرد مادة خام، بل هو روح نابضة وقصة دافئة ترويها خطوط الطبيعة الدائرية.</p>
+          <p>تأسست جازوودن بشغف لتقديم تصاميم مبتكرة تجمع بين دقة العمل اليدوي وهيبة الإنارة المدمجة الدافئة لتخلق جواً مريحاً وفريداً في بيتك أو مكتبك.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- 7. CONTACT VIEW -->
+    <div id="contact-view" class="app-page">
+      <div class="container py-5">
+        <div class="section-header text-center">
+          <h1 class="section-title" data-key="nav_contact">اتصل بنا</h1>
+          <div class="section-divider"></div>
+        </div>
+        <div class="grid grid-2 max-w-xl mx-auto">
+          <div class="card">
+            <h3 data-key="contact_info" class="mb-3">معلومات التواصل</h3>
+            <ul class="contact-details-list">
+              <li><i class="fa-solid fa-phone text-gold"></i> +962 7 9000 0000</li>
+              <li><i class="fa-solid fa-envelope text-gold"></i> info@jazwooden.com</li>
+              <li><i class="fa-solid fa-location-dot text-gold"></i> عمان، الأردن</li>
+            </ul>
+          </div>
+          <div class="card">
+            <h3 data-key="contact_write_us" class="mb-3">راسلنا مباشرة</h3>
+            <form onsubmit="event.preventDefault(); showToast('تم إرسال رسالتك بنجاح!', 'success');">
+              <div class="form-group">
+                <input type="text" placeholder="الاسم الكامل" required>
+              </div>
+              <div class="form-group">
+                <input type="email" placeholder="البريد الإلكتروني" required>
+              </div>
+              <div class="form-group">
+                <textarea rows="3" placeholder="محتوى الرسالة..." required></textarea>
+              </div>
+              <button class="btn btn-primary btn-full">إرسال الرسالة</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 8. ADMIN LOGIN VIEW -->
+    <div id="admin-login-view" class="app-page">
+      <div class="container py-5 max-w-xs text-center">
+        <h1 class="mb-3" data-key="admin_login_title">تسجيل دخول المشرف</h1>
+        <div class="card">
+          <form id="admin-login-form" onsubmit="handleAdminLogin(event)">
+            <div class="form-group">
+              <label for="admin-pass" data-key="label_password">رمز المرور الخاص بلوحة الإدارة</label>
+              <input type="password" id="admin-pass" required placeholder="أدخل رمز المرور">
+            </div>
+            <button type="submit" class="btn btn-primary btn-full"><span data-key="btn_login">دخول</span></button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- 9. ADMIN DASHBOARD VIEW -->
+    <div id="admin-view" class="app-page">
+      <div class="container-fluid py-4 px-md-5">
+        <div class="admin-header-panel mb-4">
+          <div>
+            <h1>لوحة تحكم الإدارة <span class="badge badge-success">مفعل</span></h1>
+            <p>أهلاً بك مجدداً في لوحة تحكم موقع جازوودن</p>
+          </div>
+          <button onclick="handleAdminLogout()" class="btn btn-outline"><i class="fa-solid fa-right-from-bracket"></i> تسجيل الخروج</button>
+        </div>
+
+        <div class="admin-layout">
+          <!-- Sidebar Navigation -->
+          <div class="admin-sidebar">
+            <button class="admin-tab-btn active" onclick="switchAdminTab('products-tab')"><i class="fa-solid fa-box"></i> المنتجات</button>
+            <button id="categories-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('categories-tab')"><i class="fa-solid fa-list"></i> الفئات والأقسام</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('orders-tab')"><i class="fa-solid fa-receipt"></i> الطلبات الواردة</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('subscriptions-tab')"><i class="fa-solid fa-users"></i> الاشتراكات</button>
+            <button id="content-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('content-tab')"><i class="fa-solid fa-file-pen"></i> نصوص الصفحات</button>
+            <button id="theme-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('theme-tab')"><i class="fa-solid fa-palette"></i> مظهر الموقع والألوان</button>
+            <div class="sidebar-divider"></div>
+            <button id="coupons-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('coupons-tab')"><i class="fa-solid fa-tag"></i> الكوبونات والخصومات</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('before-after-tab')"><i class="fa-solid fa-images"></i> قبل وبعد</button>
+            <button id="social-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('social-tab')"><i class="fa-solid fa-share-nodes"></i> التواصل الاجتماعي</button>
+            <button id="sections-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('sections-tab')"><i class="fa-solid fa-layer-group"></i> ترتيب الأقسام</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('contact-info-tab')"><i class="fa-solid fa-address-card"></i> معلومات التواصل</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('stats-tab')"><i class="fa-solid fa-chart-bar"></i> إحصائيات وتقارير</button>
+            <button class="admin-tab-btn" onclick="switchAdminTab('popup-tab')"><i class="fa-solid fa-bullhorn"></i> النوافذ المنبثقة</button>
+            <button id="logo-tab-btn" class="admin-tab-btn" onclick="switchAdminTab('logo-tab')"><i class="fa-solid fa-star"></i> الشعار والهوية</button>
+          </div>
+
+          <!-- Tab Content Containers -->
+          <div class="admin-content-panel">
+            
+            <!-- A. Products Tab -->
+            <div id="products-tab" class="admin-tab-content active">
+              <div class="admin-tab-header">
+                <h2>إدارة المنتجات</h2>
+                <button class="btn btn-secondary" onclick="openProductModal()"><i class="fa-solid fa-plus"></i> إضافة منتج جديد</button>
+              </div>
+              <div class="table-responsive mt-3">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>الصورة</th>
+                      <th>الاسم (AR/EN)</th>
+                      <th>الفئة</th>
+                      <th>السعر JOD/USD</th>
+                      <th>الخيارات المطلوبة</th>
+                      <th>وقت التوصيل</th>
+                      <th>العمليات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-products-table-body">
+                    <!-- Populated via admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- B. Categories Tab -->
+            <div id="categories-tab" class="admin-tab-content">
+              <h2>إدارة الفئات والأقسام</h2>
+              <div class="card max-w-sm mt-3">
+                <form id="admin-category-form" onsubmit="handleAddCategory(event)">
+                  <div class="form-group">
+                    <label>اسم الفئة بالعربية</label>
+                    <input type="text" id="new-cat-ar" required placeholder="مثال: رفوف مضيئة">
+                  </div>
+                  <div class="form-group">
+                    <label>اسم الفئة بالإنجليزية</label>
+                    <input type="text" id="new-cat-en" required placeholder="مثال: Illuminated Shelves">
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-full">إضافة فئة جديدة</button>
+                </form>
+              </div>
+              <div class="table-responsive mt-4">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>اسم الفئة (AR)</th>
+                      <th>اسم الفئة (EN)</th>
+                      <th>العمليات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-categories-table-body">
+                    <!-- Populated via admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- C. Orders Tab -->
+            <div id="orders-tab" class="admin-tab-content">
+              <div class="admin-tab-header">
+                <h2>إدارة الطلبات الواردة</h2>
+                <button class="btn btn-outline" onclick="syncOrdersToGoogle()"><i class="fa-solid fa-arrows-rotate"></i> مزامنة مع Google Sheets</button>
+              </div>
+              <div class="table-responsive mt-3">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>التاريخ/النوع</th>
+                      <th>العميل/الهاتف</th>
+                      <th>المنتج المطلوب</th>
+                      <th>السعر</th>
+                      <th>التخصيص/الملف</th>
+                      <th>حالة الطلب</th>
+                      <th>تحديث الحالة</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-orders-table-body">
+                    <!-- Populated via admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- D. Subscriptions Tab -->
+            <div id="subscriptions-tab" class="admin-tab-content">
+              <h2>إدارة الاشتراكات البريدية والهاتفية</h2>
+              <div class="table-responsive mt-3">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>التاريخ والوقت</th>
+                      <th>الاشتراك (هاتف/بريد)</th>
+                      <th>صفحة الاشتراك</th>
+                      <th>اللغة المختارة</th>
+                      <th>حذف</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-subscriptions-table-body">
+                    <!-- Populated via admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- E. Content Tab (About Us, Homepage texts) -->
+            <div id="content-tab" class="admin-tab-content">
+              <h2>تعديل نصوص الموقع والورشة</h2>
+              
+              <!-- Editable Site Texts (Header, Nav, Footer) -->
+              <div class="card p-3 mb-4">
+                <h4 class="mb-3">تحرير نصوص الهيدر والقوائم</h4>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>عنوان القسم الرئيسي (Hero Title) بالعربية</label>
+                    <textarea id="site-text-hero-title" rows="2"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>عنوان القسم الرئيسي (Hero Title) بالإنجليزية</label>
+                    <textarea id="site-text-hero-title-en" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>الوصف الفرعي (Hero Subtitle) بالعربية</label>
+                    <textarea id="site-text-hero-subtitle" rows="2"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>الوصف الفرعي (Hero Subtitle) بالإنجليزية</label>
+                    <textarea id="site-text-hero-subtitle-en" rows="2"></textarea>
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>عنوان الموقع (في الهيدر) بالعربية</label>
+                    <input type="text" id="site-text-nav-home">
+                  </div>
+                  <div class="form-group">
+                    <label>عنوان الموقع (في الهيدر) بالإنجليزية</label>
+                    <input type="text" id="site-text-nav-home-en">
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>منتجاتنا (Navigation) بالعربية</label>
+                    <input type="text" id="site-text-nav-products">
+                  </div>
+                  <div class="form-group">
+                    <label>منتجاتنا (Navigation) بالإنجليزية</label>
+                    <input type="text" id="site-text-nav-products-en">
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>السلة (Navigation) بالعربية</label>
+                    <input type="text" id="site-text-nav-cart">
+                  </div>
+                  <div class="form-group">
+                    <label>السلة (Navigation) بالإنجليزية</label>
+                    <input type="text" id="site-text-nav-cart-en">
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>نص زر "اطلب تصميماً خاصاً" بالعربية</label>
+                    <input type="text" id="site-text-nav-custom-cta">
+                  </div>
+                  <div class="form-group">
+                    <label>نص زر "اطلب تصميماً خاصاً" بالإنجليزية</label>
+                    <input type="text" id="site-text-nav-custom-cta-en">
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>نص حقوق النشر في الفوتر بالعربية</label>
+                    <input type="text" id="site-text-footer-copyright">
+                  </div>
+                  <div class="form-group">
+                    <label>نص حقوق النشر في الفوتر بالإنجليزية</label>
+                    <input type="text" id="site-text-footer-copyright-en">
+                  </div>
+                </div>
+                <button onclick="saveSiteTexts()" class="btn btn-primary mt-2"><i class="fa-solid fa-save"></i> حفظ نصوص الموقع</button>
+              </div>
+
+              <form id="admin-content-text-form" onsubmit="handleSavePageContent(event)" class="mt-3">
+<div class="form-group">
+  <label>فيديو اليوتيوب الرئيسي (رابط قناة، قائمة تشغيل، أو معرفات فيديو)</label>
+  <input type="text" id="admin-youtube-urls" placeholder="مثال: رابط القناة، أو معرفات مفصولة بفواصل">
+  <small class="text-muted">يمكنك وضع رابط القناة (مثل: youtube.com/@user) لعرض فيديوهاتها عشوائياً وبشكل صامت، أو وضع معرفات فيديوهات مفصولة بفواصل.</small>
+</div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>رسالتنا (رسالة الموقع) بالعربية</label>
+                    <textarea id="admin-purpose-ar" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>رسالتنا (رسالة الموقع) بالإنجليزية</label>
+                    <textarea id="admin-purpose-en" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>هدفنا بالعربية</label>
+                    <textarea id="admin-goal-ar" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>هدفنا بالإنجليزية</label>
+                    <textarea id="admin-goal-en" rows="3"></textarea>
+                  </div>
+                </div>
+                <div class="grid grid-2">
+                  <div class="form-group">
+                    <label>قصتنا بالعربية</label>
+                    <textarea id="admin-story-ar" rows="4"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>قصتنا بالإنجليزية</label>
+                    <textarea id="admin-story-en" rows="4"></textarea>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ نصوص الصفحات</button>
+              </form>
+
+              <!-- Customer Reviews Admin -->
+              <div class="section-divider my-4"></div>
+              <h3>آراء وتقييمات العملاء</h3>
+              <div class="card max-w-sm mt-3 mb-4">
+                <form id="admin-review-form" onsubmit="handleAddReview(event)">
+                  <div class="form-group">
+                    <label>اسم العميل</label>
+                    <input type="text" id="new-rev-name" required placeholder="مثال: ريما صالح">
+                  </div>
+                  <div class="form-group">
+                    <label>التقييم (النجوم)</label>
+                    <select id="new-rev-stars">
+                      <option value="5">⭐⭐⭐⭐⭐ (5/5)</option>
+                      <option value="4">⭐⭐⭐⭐ (4/5)</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label>الرأي المكتوب بالعربية</label>
+                    <textarea id="new-rev-text-ar" required rows="2"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label>الرأي المكتوب بالإنجليزية</label>
+                    <textarea id="new-rev-text-en" required rows="2"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-secondary btn-full">إضافة تقييم جديد</button>
+                </form>
+              </div>
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>العميل</th>
+                      <th>التقييم</th>
+                      <th>النص (AR)</th>
+                      <th>النص (EN)</th>
+                      <th>العمليات</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-reviews-table-body">
+                    <!-- Populated via admin.js -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- G. Coupons & Discounts Tab -->
+            <div id="coupons-tab" class="admin-tab-content">
+              <div class="admin-tab-header">
+                <h2>إدارة الكوبونات والخصومات</h2>
+                <button class="btn btn-secondary" onclick="openCouponModal()"><i class="fa-solid fa-plus"></i> إضافة كوبون جديد</button>
+              </div>
+              <div class="card max-w-md mt-3 mb-4">
+                <form id="admin-coupon-form" onsubmit="handleAddCoupon(event)">
+                  <div class="grid grid-2">
+                    <div class="form-group">
+                      <label>كود الكوبون (باللاتيني)</label>
+                      <input type="text" id="coupon-code" required placeholder="مثال: JAZWOOD20" style="text-transform:uppercase">
+                    </div>
+                    <div class="form-group">
+                      <label>نوع الخصم</label>
+                      <select id="coupon-type">
+                        <option value="percent">نسبة مئوية (%)</option>
+                        <option value="fixed">مبلغ ثابت (JOD)</option>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="grid grid-2">
+                    <div class="form-group">
+                      <label>قيمة الخصم</label>
+                      <input type="number" id="coupon-value" min="1" max="100" required placeholder="مثال: 20">
+                    </div>
+                    <div class="form-group">
+                      <label>الحد الأدنى للطلب (JOD)</label>
+                      <input type="number" id="coupon-min-order" min="0" placeholder="0 = بدون حد أدنى">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>تاريخ انتهاء الكوبون (اختياري)</label>
+                    <input type="date" id="coupon-expiry">
+                  </div>
+                  <div class="form-group">
+                    <label class="checkbox-container">
+                      <input type="checkbox" id="coupon-active" checked>
+                      <span class="checkmark"></span>
+                      الكوبون مفعل ونشط
+                    </label>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-full">حفظ الكوبون</button>
+                </form>
+              </div>
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>الكود</th>
+                      <th>نوع الخصم</th>
+                      <th>القيمة</th>
+                      <th>الحد الأدنى</th>
+                      <th>تاريخ الانتهاء</th>
+                      <th>الحالة</th>
+                      <th>حذف</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-coupons-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- H. Before & After Images Tab -->
+            <div id="before-after-tab" class="admin-tab-content">
+              <div class="admin-tab-header">
+                <h2>إدارة صور قبل وبعد</h2>
+                <button class="btn btn-secondary" onclick="handleAddBeforeAfter()"><i class="fa-solid fa-plus"></i> إضافة مجموعة جديدة</button>
+              </div>
+              <div class="card max-w-md mt-3 mb-4">
+                <form id="admin-ba-form" onsubmit="handleSaveBeforeAfter(event)">
+                  <div class="form-group">
+                    <label>رابط صورة (قبل)</label>
+                    <input type="url" id="ba-before-url" required placeholder="https://...">
+                  </div>
+                  <div class="form-group">
+                    <label>تسمية صورة (قبل) بالعربية</label>
+                    <input type="text" id="ba-before-label-ar" placeholder="مثال: قبل التحويل">
+                  </div>
+                  <div class="form-group">
+                    <label>رابط صورة (بعد)</label>
+                    <input type="url" id="ba-after-url" required placeholder="https://...">
+                  </div>
+                  <div class="form-group">
+                    <label>تسمية صورة (بعد) بالعربية</label>
+                    <input type="text" id="ba-after-label-ar" placeholder="مثال: بعد تركيب الرف المضيء">
+                  </div>
+                  <div class="grid grid-2">
+                    <div class="form-group">
+                      <label>عنوان القصة بالعربية</label>
+                      <input type="text" id="ba-title-ar" required placeholder="مثال: تحويل جدار فارغ">
+                    </div>
+                    <div class="form-group">
+                      <label>عنوان القصة بالإنجليزية</label>
+                      <input type="text" id="ba-title-en" required placeholder="Wall Transformation">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label>وصف القصة بالعربية</label>
+                    <textarea id="ba-desc-ar" rows="2"></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary btn-full">حفظ القصة</button>
+                </form>
+              </div>
+              <div class="table-responsive">
+                <table class="admin-table">
+                  <thead>
+                    <tr>
+                      <th>قبل</th>
+                      <th>بعد</th>
+                      <th>العنوان</th>
+                      <th>حذف</th>
+                    </tr>
+                  </thead>
+                  <tbody id="admin-ba-table-body"></tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- I. Social Media Links Tab -->
+            <div id="social-tab" class="admin-tab-content">
+              <h2>إدارة أزرار التواصل الاجتماعي</h2>
+              <p class="mb-3 text-muted">عدّل روابط منصات التواصل الاجتماعي التي تظهر في الموقع.</p>
+              <form id="admin-social-form" onsubmit="handleSaveSocialLinks(event)" class="card max-w-md mt-3">
+                <div class="form-group">
+                  <label><i class="fa-brands fa-whatsapp text-success"></i> رقم الواتساب (مع رمز الدولة)</label>
+                  <input type="text" id="social-whatsapp" placeholder="مثال: 962790000000" dir="ltr">
+                  <small class="text-muted">بدون + في البداية. سيُستخدم في جميع أزرار الواتساب.</small>
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-brands fa-instagram" style="color:#E4405F"></i> رابط الانستغرام</label>
+                  <input type="url" id="social-instagram" placeholder="https://www.instagram.com/jazwooden" dir="ltr">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-brands fa-tiktok"></i> رابط التيك توك</label>
+                  <input type="url" id="social-tiktok" placeholder="https://www.tiktok.com/@jazwooden" dir="ltr">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-brands fa-youtube" style="color:#FF0000"></i> رابط يوتيوب</label>
+                  <input type="url" id="social-youtube" placeholder="https://www.youtube.com/@jazwooden" dir="ltr">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-brands fa-facebook" style="color:#1877F2"></i> رابط الفيسبوك</label>
+                  <input type="url" id="social-facebook" placeholder="https://www.facebook.com/jazwooden" dir="ltr">
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ روابط التواصل</button>
+              </form>
+            </div>
+
+            <!-- J. Section Order Tab -->
+            <div id="sections-tab" class="admin-tab-content">
+              <h2>ترتيب وإظهار/إخفاء أقسام الصفحة الرئيسية</h2>
+              <p class="mb-3 text-muted">استخدم الأسهم لتغيير ترتيب ظهور الأقسام في الصفحة الرئيسية. يمكنك أيضاً إظهار أو إخفاء أي قسم.</p>
+              
+              <!-- Section Images Upload -->
+              <div class="card p-3 mb-4 max-w-md">
+                <h4>صور اختيارية للأقسام والعملاء</h4>
+                <div class="form-group">
+                  <label>رابط صورة قسم المنتجات (اختياري)</label>
+                  <input type="url" id="section-img-products" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                  <label>رابط صورة قسم آراء العملاء (اختياري)</label>
+                  <input type="url" id="section-img-reviews" placeholder="https://...">
+                </div>
+                <div class="form-group">
+                  <label>رابط صورة قسم قبل وبعد (اختياري)</label>
+                  <input type="url" id="section-img-before-after" placeholder="https://...">
+                </div>
+                <button onclick="saveSectionImages()" class="btn btn-secondary mt-2"><i class="fa-solid fa-save"></i> حفظ الصور</button>
+              </div>
+              
+              <div id="sections-order-list" class="sections-order-list mt-3">
+                <!-- Dynamically populated -->
+              </div>
+              <button onclick="saveSectionsOrder()" class="btn btn-primary mt-3"><i class="fa-solid fa-floppy-disk"></i> حفظ الترتيب الجديد</button>
+            </div>
+
+            <!-- K. Contact Info Tab -->
+            <div id="contact-info-tab" class="admin-tab-content">
+              <h2>إدارة معلومات التواصل</h2>
+              <form id="admin-contact-info-form" onsubmit="handleSaveContactInfo(event)" class="card max-w-md mt-3">
+                <div class="form-group">
+                  <label><i class="fa-solid fa-phone text-gold"></i> رقم الهاتف الرئيسي</label>
+                  <input type="text" id="contact-phone" placeholder="مثال: +962 7 9000 0000">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-envelope text-gold"></i> البريد الإلكتروني</label>
+                  <input type="email" id="contact-email" placeholder="info@jazwooden.com">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-location-dot text-gold"></i> العنوان بالعربية</label>
+                  <input type="text" id="contact-address-ar" placeholder="مثال: عمان، الأردن">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-location-dot text-gold"></i> العنوان بالإنجليزية</label>
+                  <input type="text" id="contact-address-en" placeholder="Amman, Jordan">
+                </div>
+                <div class="form-group">
+                  <label><i class="fa-solid fa-clock text-gold"></i> ساعات العمل (اختياري)</label>
+                  <input type="text" id="contact-hours" placeholder="مثال: السبت - الخميس: 9ص - 9م">
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ معلومات التواصل</button>
+              </form>
+            </div>
+
+            <!-- L. Statistics Tab -->
+            <div id="stats-tab" class="admin-tab-content">
+              <h2>إحصائيات وتقارير الموقع</h2>
+              <div class="stats-grid mt-3">
+                <div class="stat-card">
+                  <div class="stat-icon"><i class="fa-solid fa-receipt"></i></div>
+                  <div class="stat-value" id="stat-total-orders">0</div>
+                  <div class="stat-label">إجمالي الطلبات</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon" style="background:rgba(78,138,94,0.1); color:var(--success-color)"><i class="fa-solid fa-circle-check"></i></div>
+                  <div class="stat-value" id="stat-completed-orders">0</div>
+                  <div class="stat-label">الطلبات المكتملة</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon" style="background:rgba(212,175,55,0.1); color:var(--secondary-color)"><i class="fa-solid fa-users"></i></div>
+                  <div class="stat-value" id="stat-total-subs">0</div>
+                  <div class="stat-label">المشتركين</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon" style="background:rgba(139,90,43,0.1); color:var(--primary-color)"><i class="fa-solid fa-box"></i></div>
+                  <div class="stat-value" id="stat-total-products">0</div>
+                  <div class="stat-label">المنتجات المنشورة</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon" style="background:rgba(192,57,43,0.1); color:var(--danger-color)"><i class="fa-solid fa-coins"></i></div>
+                  <div class="stat-value" id="stat-total-revenue">0 JOD</div>
+                  <div class="stat-label">إجمالي الإيرادات المقدرة</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-icon" style="background:rgba(78,138,94,0.1); color:var(--success-color)"><i class="fa-solid fa-spinner"></i></div>
+                  <div class="stat-value" id="stat-pending-orders">0</div>
+                  <div class="stat-label">الطلبات قيد التنفيذ</div>
+                </div>
+              </div>
+              <div class="card mt-4">
+                <h3 class="mb-3">آخر 5 طلبات</h3>
+                <div class="table-responsive">
+                  <table class="admin-table">
+                    <thead>
+                      <tr>
+                        <th>التاريخ</th>
+                        <th>العميل</th>
+                        <th>المنتج</th>
+                        <th>السعر</th>
+                        <th>الحالة</th>
+                      </tr>
+                    </thead>
+                    <tbody id="stats-recent-orders-body"></tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            <!-- M. Pop-ups Tab -->
+            <div id="popup-tab" class="admin-tab-content">
+              <h2>إدارة النوافذ المنبثقة والإعلانات الترويجية</h2>
+              <form id="admin-popup-form" onsubmit="handleSavePopup(event)" class="card max-w-md mt-3">
+                <div class="form-group">
+                  <label class="checkbox-container">
+                    <input type="checkbox" id="popup-enabled">
+                    <span class="checkmark"></span>
+                    تفعيل النافذة المنبثقة عند دخول الموقع
+                  </label>
+                </div>
+                <div class="form-group">
+                  <label>عنوان الإعلان بالعربية</label>
+                  <input type="text" id="popup-title-ar" placeholder="مثال: عرض خاص لمدة محدودة!">
+                </div>
+                <div class="form-group">
+                  <label>عنوان الإعلان بالإنجليزية</label>
+                  <input type="text" id="popup-title-en" placeholder="Special Offer - Limited Time!">
+                </div>
+                <div class="form-group">
+                  <label>نص الإعلان بالعربية</label>
+                  <textarea id="popup-body-ar" rows="3" placeholder="مثال: استخدم كوبون JAZWOOD10 واحصل على 10% خصم على أول طلب"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>نص الإعلان بالإنجليزية</label>
+                  <textarea id="popup-body-en" rows="3" placeholder="Use code JAZWOOD10 for 10% off your first order!"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>نص زر الإجراء بالعربية</label>
+                  <input type="text" id="popup-btn-ar" placeholder="تسوق الآن">
+                </div>
+                <div class="form-group">
+                  <label>رابط زر الإجراء (اختياري)</label>
+                  <input type="text" id="popup-btn-link" placeholder="#products">
+                </div>
+                <div class="form-group">
+                  <label>التأخير قبل الظهور (بالثواني)</label>
+                  <input type="number" id="popup-delay" value="3" min="0" max="30">
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ إعدادات النافذة المنبثقة</button>
+              </form>
+            </div>
+
+            <!-- N. Logo & Brand Tab -->
+            <div id="logo-tab" class="admin-tab-content">
+              <h2>تخصيص الشعار والهوية البصرية للعلامة</h2>
+              <form id="admin-logo-form" onsubmit="handleSaveLogoSettings(event)" class="card max-w-md mt-3">
+                <div class="form-group">
+                  <label>اسم العلامة التجارية (اسم الموقع)</label>
+                  <input type="text" id="logo-brand-name" placeholder="مثال: Jazwooden" dir="ltr">
+                  <small class="text-muted">يظهر في الهيدر والفوتر وعلامة تبويب المتصفح.</small>
+                </div>
+                <div class="form-group">
+                  <label>رابط صورة الشعار (اختياري بدلاً من الشعار النصي)</label>
+                  <input type="url" id="logo-image-url" placeholder="https://...رابط صورة الشعار..." dir="ltr">
+                  <small class="text-muted">اترك فارغاً لاستخدام الشعار النصي الافتراضي.</small>
+                </div>
+                <div class="form-group">
+                  <label>الوصف المختصر للموقع (Meta Description)</label>
+                  <textarea id="logo-meta-desc" rows="2" placeholder="موقع جازوودن للمنتجات الخشبية اليدوية الفاخرة والمضيئة والمصممة حسب الطلب."></textarea>
+                </div>
+                <div class="form-group">
+                  <label>شعار الفوتر (Copyright) بالعربية</label>
+                  <input type="text" id="logo-footer-ar" placeholder="مثال: صنع بكل حب بالخشب والإنارة">
+                </div>
+                <button type="submit" class="btn btn-primary">حفظ إعدادات الشعار</button>
+              </form>
+
+              <!-- Assistant Password Section -->
+              <div class="section-divider my-4"></div>
+              <h3>إدارة كلمة مرور المساعد (Assistant)</h3>
+              <p class="text-muted mb-3">كلمة مرور المساعد تتيح الدخول إلى لوحة التحكم بصلاحية محدودة (بدون تغيير كلمات المرور أو إدارة المستخدمين).</p>
+              <form id="assistant-password-form" onsubmit="handleChangeAssistantPassword(event)" class="card max-w-md mt-3">
+                <div class="form-group">
+                  <label>كلمة المرور الحالية للمساعد</label>
+                  <input type="password" id="current-assistant-password" placeholder="أدخل كلمة المرور الحالية للمساعد">
+                </div>
+                <div class="form-group">
+                  <label>كلمة المرور الجديدة للمساعد</label>
+                  <input type="password" id="new-assistant-password" placeholder="أدخل كلمة المرور الجديدة">
+                </div>
+                <div class="form-group">
+                  <label>تأكيد كلمة المرور الجديدة</label>
+                  <input type="password" id="confirm-assistant-password" placeholder="أعد كتابة كلمة المرور الجديدة">
+                  <span class="error-msg" id="err-confirm-assistant-password"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">تغيير كلمة مرور المساعد</button>
+              </form>
+
+              <!-- Admin Password Change Section -->
+              <div class="section-divider my-4"></div>
+              <h3>تغيير كلمة مرور المدير (Admin)</h3>
+              <p class="text-muted mb-3">المدير فقط يمكنه تغيير كلمات المرور. كلمة المرور الحالية للمدير مطلوبة للتحقق.</p>
+              <form id="admin-password-form" onsubmit="handleChangeAdminPassword(event)" class="card max-w-md mt-3">
+                <div class="form-group">
+                  <label>كلمة المرور الحالية</label>
+                  <input type="password" id="current-password" required placeholder="أدخل كلمة المرور الحالية">
+                </div>
+                <div class="form-group">
+                  <label>كلمة المرور الجديدة</label>
+                  <input type="password" id="new-password" required placeholder="أدخل كلمة المرور الجديدة">
+                </div>
+                <div class="form-group">
+                  <label>تأكيد كلمة المرور الجديدة</label>
+                  <input type="password" id="confirm-password" required placeholder="أعد كتابة كلمة المرور الجديدة">
+                  <span class="error-msg" id="err-confirm-password"></span>
+                </div>
+                <button type="submit" class="btn btn-primary">تغيير كلمة المرور</button>
+              </form>
+            </div>
+
+            <!-- F. Theme customization -->
+            <div id="theme-tab" class="admin-tab-content">
+              <h2>تخصيص مظهر وألوان الموقع</h2>
+              <p class="mb-3">اختر مجموعة الألوان المناسبة للهوية البصرية لعلامتك التجارية. سيتم تطبيق التغييرات فوراً.</p>
+              
+              <div class="card max-w-md">
+                <div class="form-group">
+                  <label for="theme-primary">اللون الأساسي (بني خشبي / دافئ)</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="theme-primary" value="#8B5A2B" onchange="updateThemePreview()">
+                    <input type="text" id="theme-primary-hex" value="#8B5A2B" oninput="updateThemePreviewHex(this.value, 'primary')">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="theme-secondary">اللون الثانوي (ذهبي / أصفر دافئ)</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="theme-secondary" value="#D4AF37" onchange="updateThemePreview()">
+                    <input type="text" id="theme-secondary-hex" value="#D4AF37" oninput="updateThemePreviewHex(this.value, 'secondary')">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="theme-bg">خلفية الموقع (عاجي دافئ / بيج فاتح)</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="theme-bg" value="#FCFBF7" onchange="updateThemePreview()">
+                    <input type="text" id="theme-bg-hex" value="#FCFBF7" oninput="updateThemePreviewHex(this.value, 'bg')">
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="theme-text">لون النصوص (بني داكن جداً / أسود دافئ)</label>
+                  <div class="color-picker-wrapper">
+                    <input type="color" id="theme-text" value="#2B1B17" onchange="updateThemePreview()">
+                    <input type="text" id="theme-text-hex" value="#2B1B17" oninput="updateThemePreviewHex(this.value, 'text')">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="theme-bg-image">صورة الخلفية (رابط URL - اختياري)</label>
+                  <input type="url" id="theme-bg-image" placeholder="https://example.com/background.jpg">
+                  <small class="text-muted">سيتم عرض الصورة كخلفية للموقع بأكمله. اتركها فارغة لاستخدام لون الخلفية فقط.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="admin-sheets-url">عنوان Webhook الخاص بـ Google Sheets</label>
+                  <input type="url" id="admin-sheets-url" placeholder="https://script.google.com/macros/s/.../exec">
+                  <small class="text-muted">عنوان الـ Webhook المستخرج من Apps Script لإرسال الطلبات مباشرة.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="admin-imgbb-key">مفتاح API الخاص بـ Imgbb (اختياري)</label>
+                  <input type="text" id="admin-imgbb-key" placeholder="أدخل مفتاح الـ API الخاص بـ Imgbb">
+                  <small class="text-muted">مفتاح مجاني لرفع صور العملاء وتخزين روابطها.</small>
+                </div>
+
+                <button onclick="saveThemeConfiguration()" class="btn btn-primary mt-2">حفظ التغييرات بالكامل</button>
+                <button onclick="resetThemeConfiguration()" class="btn btn-outline mt-2">إعادة تعيين الألوان الافتراضية</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- DYNAMIC PRODUCT CRUD MODAL -->
+  <div id="product-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="product-modal-title">إضافة / تعديل منتج</h3>
+        <button class="modal-close" onclick="closeProductModal()">&times;</button>
+      </div>
+      <form id="admin-product-form" onsubmit="handleProductFormSubmit(event)">
+        <input type="hidden" id="edit-product-id">
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>اسم المنتج بالعربية *</label>
+            <input type="text" id="prod-name-ar" required>
+          </div>
+          <div class="form-group">
+            <label>اسم المنتج بالإنجليزية *</label>
+            <input type="text" id="prod-name-en" required>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>سعر المنتج بالدينار الأردني (JOD) *</label>
+            <input type="number" step="0.01" id="prod-price-jod" required>
+          </div>
+          <div class="form-group">
+            <label>سعر المنتج بالدولار الأمريكي (USD) *</label>
+            <input type="number" step="0.01" id="prod-price-usd" required>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>الفئة *</label>
+            <select id="prod-category" required></select>
+          </div>
+          <div class="form-group">
+            <label>وقت التوصيل المقدر *</label>
+            <input type="text" id="prod-delivery" placeholder="مثال: 3-5 أيام عمل" required>
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>رابط الصورة الرئيسية للمنتج *</label>
+            <input type="url" id="prod-img-main" required placeholder="https://images.unsplash.com/...">
+          </div>
+          <div class="form-group">
+            <label>روابط الصور الإضافية (معرض الصور)</label>
+            <input type="text" id="prod-img-gallery" placeholder="افصل بين الروابط بفواصل">
+          </div>
+        </div>
+        <div class="grid grid-2">
+          <div class="form-group">
+            <label>تفاصيل الوصف بالعربية *</label>
+            <textarea id="prod-desc-ar" required rows="3"></textarea>
+          </div>
+          <div class="form-group">
+            <label>تفاصيل الوصف بالإنجليزية *</label>
+            <textarea id="prod-desc-en" required rows="3"></textarea>
+          </div>
+        </div>
+        
+        <!-- Order customization controls -->
+        <div class="card p-3 my-3">
+          <h4>مواصفات وخصائص خيارات الشراء للمنتج</h4>
+          <div class="form-row-checkboxes">
+            <label class="checkbox-container">
+              <input type="checkbox" id="prod-customizable">
+              <span class="checkmark"></span>
+              المنتج قابل للتخصيص والحفر (إظهار حقل كتابة عبارة مخصصة)
+            </label>
+            <label class="checkbox-container mt-2">
+              <input type="checkbox" id="prod-require-image">
+              <span class="checkmark"></span>
+              يتطلب رفع ملف أو صورة خاصة لتجهيز الطلب
+            </label>
+            <label class="checkbox-container mt-2">
+              <input type="checkbox" id="prod-best-seller">
+              <span class="checkmark"></span>
+              عرض المنتج في قسم "الأكثر مبيعاً" بالصفحة الرئيسية
+            </label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-full">حفظ بيانات المنتج</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- FIXED FOOTER -->
+  <footer class="main-footer">
+    <!-- Subscription Newsletter (Appears near the bottom of all catalog pages) -->
+    <div id="newsletter-section" class="footer-newsletter">
+      <div class="container text-center">
+        <h3 data-key="subscribe_title" class="newsletter-title">اشترك لتصلك أحدث العروض والمسابقات والخصومات</h3>
+        <p data-key="subscribe_desc" class="newsletter-desc">كن أول من يعلم بخصوماتنا وجوائزنا للمصممين</p>
+        <form id="newsletter-form" onsubmit="handleNewsletterSubmit(event)" class="newsletter-form">
+          <input type="text" id="newsletter-input" required placeholder="أدخل رقم هاتفك أو بريدك الإلكتروني...">
+          <button type="submit" class="btn btn-secondary"><span data-key="btn_subscribe">اشترك</span></button>
+        </form>
+      </div>
+    </div>
+
+    <!-- Sub-footer links & Admin gateway -->
+    <div class="footer-bottom py-4 text-center">
+      <div class="container">
+        <p class="copyright">&copy; 2026 Jazwooden. All rights reserved. صنع بكل حب بالخشب والإنارة 🪵💡</p>
+        <!-- Social Media Icons -->
+        <div class="footer-social-icons mt-3 mb-3">
+          <a href="https://wa.me/962790000000" target="_blank" data-social="whatsapp" title="واتساب" class="social-icon whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+          <a href="" target="_blank" data-social="instagram" title="انستغرام" class="social-icon instagram"><i class="fa-brands fa-instagram"></i></a>
+          <a href="" target="_blank" data-social="tiktok" title="تيك توك" class="social-icon tiktok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="" target="_blank" data-social="youtube" title="يوتيوب" class="social-icon youtube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="" target="_blank" data-social="facebook" title="فيسبوك" class="social-icon facebook"><i class="fa-brands fa-facebook"></i></a>
+        </div>
+        <div class="footer-links mt-2">
+          <a href="#about" data-key="nav_about">من نحن</a> | 
+          <a href="#contact" data-key="nav_contact">اتصل بنا</a> | 
+          <a href="#admin-login" class="admin-link text-gold"><i class="fa-solid fa-lock"></i> <span data-key="admin_link">لوحة الإدارة (Jazwooden Admin)</span></a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- DYNAMIC TOAST CONTAINER -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- SPA Router & Dynamic Logic Script Imports -->
+  <script src="database.js"></script>
+  <script src="app.js"></script>
+  <script src="admin.js"></script>
+
+  <!-- YouTube IFrame Player API -->
+  <script src="https://www.youtube.com/iframe_api"></script>
+</body>
+</html>

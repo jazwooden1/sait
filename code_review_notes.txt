@@ -1,0 +1,77 @@
+JAZWOODEN CODE REVIEW NOTES
+===========================
+
+PROJECT STRUCTURE:
+- index.html: Main SPA with sections (hero, video-gallery, brand-values, products-showcase, before-after, reviews, whatsapp-cta, products-view, product-detail-view, custom-design-view, cart-view, about-view, contact-view, admin-login-view, admin-view)
+- style.css: Theme CSS with CSS variables for colors
+- database.js: DatabaseService class with LocalStorage CRUD for products, categories, reviews, content, orders, subscriptions, settings
+- app.js: Main runtime - routing, translations, rendering, cart, order handling
+- admin.js: Admin panel controllers - products, categories, orders, subscriptions, content, theme, coupons, social, sections, contact, stats, popup, logo, password
+
+EXISTING FEATURES ALREADY IMPLEMENTED (partial):
+1. Section ordering - UI exists but doesn't actually reorder/re-render homepage sections
+2. Social media links - partial (only WhatsApp applied, others stored but not rendered)
+3. YouTube - autoplay/muted exists but no mute/unmute toggle button
+4. Coupons - admin CRUD exists, validateCoupon function exists, but NOT integrated into product/cart/checkout flows
+5. Password separation - admin/assistant roles exist, but assistant password is hardcoded ('jazassistant2026')
+6. Theme - only colors supported, no background image
+7. Social links CRUD - exists in admin but only WhatsApp applied, no social icons in footer/nav
+8. Header text editing - no mechanism to edit nav/header text from admin
+9. Search - simple includes filter, no ranking by name-first priority
+
+FEATURES TO IMPLEMENT/MODIFY:
+
+ADMIN PANEL:
+1. SECTION VISIBILITY CONTROL:
+   - Add toggle checkboxes for each homepage section (hero, features, workshop, products, before-after, reviews, whatsapp-cta)
+   - Store visibility in localStorage (jaz_section_visibility)
+   - Apply visibility in renderHome() by adding/removing 'hidden' class on sections
+   - Also support ordering (already has UI but not functional)
+
+2. YOUTUBE AUTOPLAY:
+   - Already has autoplay + mute
+   - ADD: Mute/Unmute toggle button overlaid on video player
+   - Ensure video starts muted and plays automatically
+
+3. SOCIAL MEDIA MANAGEMENT:
+   - Full CRUD (already exists for saving)
+   - Need to render social icons in footer with links
+   - Need to apply all links (not just WhatsApp) on page load
+
+4. AUTO-SYNC:
+   - Orders already auto-sync on creation (database.js addOrder)
+   - Subscriptions already auto-sync (database.js addSubscription)
+   - Need to ensure real-time update notifications for admin
+
+5. APPEARANCE CUSTOMIZATION:
+   - Add background image URL option in theme tab
+   - Store in jaz_settings (bg_image_url)
+   - Apply as CSS background-image on body with proper sizing
+
+6. PASSWORD SEPARATION:
+   - Admin password: stored in jaz_admin_password (default: jazadmin2026)
+   - Assistant password: currently hardcoded 'jazassistant2026'
+   - NEED: Separate storage (jaz_assistant_password), editable from admin only
+
+7. TEXT EDITING:
+   - Header/nav text editable from admin
+   - Add fields in content tab for: site_title, hero_title, hero_subtitle, nav items
+   - Store in jaz_content
+   - Apply in renderHome() and applyTranslations()
+
+PRODUCT PAGE:
+8. COUPON SYSTEM:
+   - Add coupon input field on product detail page (below price)
+   - Add coupon input field in cart page (above totals)
+   - Integration of validateCoupon() into calculateCartTotals()
+   - Success state: green field + checkmark
+   - Prevent multiple coupons in same order
+   - Apply to all products in cart
+
+9. IMPROVED SEARCH:
+   - Name match = highest score
+   - Description match = lower score
+   - Sort results by relevance score (name matches first)
+
+10. ADD TO CART:
+   - Already functional, just verify all buttons work correctly
